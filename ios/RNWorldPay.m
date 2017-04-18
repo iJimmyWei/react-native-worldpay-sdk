@@ -1,7 +1,6 @@
+#import "RNWorldPay.h"
 
-#import "RNReactNativeWorldpaySdk.h"
-
-@implementation RNReactNativeWorldpaySdk
+@implementation RNWorldPay
 
 - (dispatch_queue_t)methodQueue
 {

@@ -1,0 +1,515 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B114FC201EA6043300A689CC /* Worldpay+ApplePay.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC1F1EA6043300A689CC /* Worldpay+ApplePay.m */; };
+		B114FC241EA6044100A689CC /* WorldpayCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC221EA6044100A689CC /* WorldpayCardViewController.m */; };
+		B114FC281EA6044C00A689CC /* ThreeDSController.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC261EA6044C00A689CC /* ThreeDSController.m */; };
+		B114FC2C1EA6045C00A689CC /* APMController.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC2A1EA6045C00A689CC /* APMController.m */; };
+		B114FC301EA6046700A689CC /* WorldpayAPMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC2E1EA6046700A689CC /* WorldpayAPMViewController.m */; };
+		B114FC331EA6048D00A689CC /* WorldpayUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC321EA6048D00A689CC /* WorldpayUtils.m */; };
+		B114FC521EA6082C00A689CC /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC401EA6082C00A689CC /* AFHTTPRequestOperation.m */; };
+		B114FC531EA6082C00A689CC /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC421EA6082C00A689CC /* AFHTTPRequestOperationManager.m */; };
+		B114FC541EA6082C00A689CC /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC441EA6082C00A689CC /* AFHTTPSessionManager.m */; };
+		B114FC551EA6082C00A689CC /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC471EA6082C00A689CC /* AFNetworkReachabilityManager.m */; };
+		B114FC561EA6082C00A689CC /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC491EA6082C00A689CC /* AFSecurityPolicy.m */; };
+		B114FC571EA6082C00A689CC /* AFURLConnectionOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC4B1EA6082C00A689CC /* AFURLConnectionOperation.m */; };
+		B114FC581EA6082C00A689CC /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC4D1EA6082C00A689CC /* AFURLRequestSerialization.m */; };
+		B114FC591EA6082C00A689CC /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC4F1EA6082C00A689CC /* AFURLResponseSerialization.m */; };
+		B114FC5A1EA6082C00A689CC /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC511EA6082C00A689CC /* AFURLSessionManager.m */; };
+		B114FC5D1EA608E100A689CC /* Worldpay.m in Sources */ = {isa = PBXBuildFile; fileRef = B114FC5C1EA608E100A689CC /* Worldpay.m */; };
+		B3E7B58A1CC2AC0600A0062D /* RNWorldPay.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNWorldPay.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		58B511D91A9E6C8500147676 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		134814201AA4EA6300B7C361 /* libRNWorldPay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNWorldPay.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B114FC0E1EA603D600A689CC /* amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amex.png; sourceTree = "<group>"; };
+		B114FC0F1EA603D600A689CC /* back_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back_arrow@2x.png"; sourceTree = "<group>"; };
+		B114FC101EA603D600A689CC /* default_card@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_card@2x.png"; sourceTree = "<group>"; };
+		B114FC111EA603D600A689CC /* lockB@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lockB@2x.png"; sourceTree = "<group>"; };
+		B114FC121EA603D600A689CC /* lockW@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lockW@2x.png"; sourceTree = "<group>"; };
+		B114FC131EA603D600A689CC /* maestro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maestro.png; sourceTree = "<group>"; };
+		B114FC141EA603D600A689CC /* mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mastercard.png; sourceTree = "<group>"; };
+		B114FC151EA603D600A689CC /* visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visa.png; sourceTree = "<group>"; };
+		B114FC161EA603D600A689CC /* x_b@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x_b@2x.png"; sourceTree = "<group>"; };
+		B114FC171EA603D600A689CC /* x_w@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "x_w@2x.png"; sourceTree = "<group>"; };
+		B114FC1E1EA6043300A689CC /* Worldpay+ApplePay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Worldpay+ApplePay.h"; sourceTree = "<group>"; };
+		B114FC1F1EA6043300A689CC /* Worldpay+ApplePay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Worldpay+ApplePay.m"; sourceTree = "<group>"; };
+		B114FC211EA6044100A689CC /* WorldpayCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldpayCardViewController.h; sourceTree = "<group>"; };
+		B114FC221EA6044100A689CC /* WorldpayCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldpayCardViewController.m; sourceTree = "<group>"; };
+		B114FC231EA6044100A689CC /* WorldpayCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldpayCardViewController.xib; sourceTree = "<group>"; };
+		B114FC251EA6044C00A689CC /* ThreeDSController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThreeDSController.h; sourceTree = "<group>"; };
+		B114FC261EA6044C00A689CC /* ThreeDSController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThreeDSController.m; sourceTree = "<group>"; };
+		B114FC271EA6044C00A689CC /* ThreeDSController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ThreeDSController.xib; sourceTree = "<group>"; };
+		B114FC291EA6045C00A689CC /* APMController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APMController.h; sourceTree = "<group>"; };
+		B114FC2A1EA6045C00A689CC /* APMController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APMController.m; sourceTree = "<group>"; };
+		B114FC2B1EA6045C00A689CC /* APMController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = APMController.xib; sourceTree = "<group>"; };
+		B114FC2D1EA6046700A689CC /* WorldpayAPMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldpayAPMViewController.h; sourceTree = "<group>"; };
+		B114FC2E1EA6046700A689CC /* WorldpayAPMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldpayAPMViewController.m; sourceTree = "<group>"; };
+		B114FC2F1EA6046700A689CC /* WorldpayAPMViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WorldpayAPMViewController.xib; sourceTree = "<group>"; };
+		B114FC311EA6048D00A689CC /* WorldpayUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldpayUtils.h; sourceTree = "<group>"; };
+		B114FC321EA6048D00A689CC /* WorldpayUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorldpayUtils.m; sourceTree = "<group>"; };
+		B114FC361EA604A100A689CC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
+		B114FC391EA604F900A689CC /* WorldpayResources-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WorldpayResources-Info.plist"; sourceTree = "<group>"; };
+		B114FC3A1EA604F900A689CC /* WorldpayResources-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WorldpayResources-Prefix.pch"; sourceTree = "<group>"; };
+		B114FC3F1EA6082C00A689CC /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
+		B114FC401EA6082C00A689CC /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
+		B114FC411EA6082C00A689CC /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
+		B114FC421EA6082C00A689CC /* AFHTTPRequestOperationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperationManager.m; sourceTree = "<group>"; };
+		B114FC431EA6082C00A689CC /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		B114FC441EA6082C00A689CC /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPSessionManager.m; sourceTree = "<group>"; };
+		B114FC451EA6082C00A689CC /* AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworking.h; sourceTree = "<group>"; };
+		B114FC461EA6082C00A689CC /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
+		B114FC471EA6082C00A689CC /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
+		B114FC481EA6082C00A689CC /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
+		B114FC491EA6082C00A689CC /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
+		B114FC4A1EA6082C00A689CC /* AFURLConnectionOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLConnectionOperation.h; sourceTree = "<group>"; };
+		B114FC4B1EA6082C00A689CC /* AFURLConnectionOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLConnectionOperation.m; sourceTree = "<group>"; };
+		B114FC4C1EA6082C00A689CC /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLRequestSerialization.h; sourceTree = "<group>"; };
+		B114FC4D1EA6082C00A689CC /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLRequestSerialization.m; sourceTree = "<group>"; };
+		B114FC4E1EA6082C00A689CC /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLResponseSerialization.h; sourceTree = "<group>"; };
+		B114FC4F1EA6082C00A689CC /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
+		B114FC501EA6082C00A689CC /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
+		B114FC511EA6082C00A689CC /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
+		B114FC5B1EA608E100A689CC /* Worldpay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Worldpay.h; sourceTree = "<group>"; };
+		B114FC5C1EA608E100A689CC /* Worldpay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Worldpay.m; sourceTree = "<group>"; };
+		B3E7B5881CC2AC0600A0062D /* RNWorldPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNWorldPay.h; sourceTree = "<group>"; };
+		B3E7B5891CC2AC0600A0062D /* RNWorldPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNWorldPay.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		58B511D81A9E6C8500147676 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		134814211AA4EA7D00B7C361 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				134814201AA4EA6300B7C361 /* libRNWorldPay.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		58B511D21A9E6C8500147676 = {
+			isa = PBXGroup;
+			children = (
+				B114FC3E1EA6081B00A689CC /* AFNetworking */,
+				B114FC371EA604C800A689CC /* WorldpayResources */,
+				B114FC0C1EA603AE00A689CC /* Resources */,
+				B114FC181EA603EE00A689CC /* Worldpay */,
+				B3E7B5881CC2AC0600A0062D /* RNWorldPay.h */,
+				B3E7B5891CC2AC0600A0062D /* RNWorldPay.m */,
+				134814211AA4EA7D00B7C361 /* Products */,
+				B114FC3B1EA6055300A689CC /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B114FC0C1EA603AE00A689CC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B114FC0D1EA603B700A689CC /* images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		B114FC0D1EA603B700A689CC /* images */ = {
+			isa = PBXGroup;
+			children = (
+				B114FC0E1EA603D600A689CC /* amex.png */,
+				B114FC0F1EA603D600A689CC /* back_arrow@2x.png */,
+				B114FC101EA603D600A689CC /* default_card@2x.png */,
+				B114FC111EA603D600A689CC /* lockB@2x.png */,
+				B114FC121EA603D600A689CC /* lockW@2x.png */,
+				B114FC131EA603D600A689CC /* maestro.png */,
+				B114FC141EA603D600A689CC /* mastercard.png */,
+				B114FC151EA603D600A689CC /* visa.png */,
+				B114FC161EA603D600A689CC /* x_b@2x.png */,
+				B114FC171EA603D600A689CC /* x_w@2x.png */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		B114FC181EA603EE00A689CC /* Worldpay */ = {
+			isa = PBXGroup;
+			children = (
+				B114FC5B1EA608E100A689CC /* Worldpay.h */,
+				B114FC5C1EA608E100A689CC /* Worldpay.m */,
+				B114FC191EA603F800A689CC /* ApplePay */,
+				B114FC1A1EA603FF00A689CC /* Card */,
+				B114FC1B1EA6040300A689CC /* 3DS */,
+				B114FC1C1EA6040D00A689CC /* APM */,
+				B114FC311EA6048D00A689CC /* WorldpayUtils.h */,
+				B114FC321EA6048D00A689CC /* WorldpayUtils.m */,
+				B114FC1D1EA6041E00A689CC /* Supporting Files */,
+			);
+			name = Worldpay;
+			sourceTree = "<group>";
+		};
+		B114FC191EA603F800A689CC /* ApplePay */ = {
+			isa = PBXGroup;
+			children = (
+				B114FC1E1EA6043300A689CC /* Worldpay+ApplePay.h */,
+				B114FC1F1EA6043300A689CC /* Worldpay+ApplePay.m */,
+			);
+			name = ApplePay;
+			sourceTree = "<group>";
+		};
+		B114FC1A1EA603FF00A689CC /* Card */ = {
+			isa = PBXGroup;
+			children = (
+				B114FC211EA6044100A689CC /* WorldpayCardViewController.h */,
+				B114FC221EA6044100A689CC /* WorldpayCardViewController.m */,
+				B114FC231EA6044100A689CC /* WorldpayCardViewController.xib */,
+			);
+			name = Card;
+			sourceTree = "<group>";
+		};
+		B114FC1B1EA6040300A689CC /* 3DS */ = {
+			isa = PBXGroup;
+			children = (
+				B114FC251EA6044C00A689CC /* ThreeDSController.h */,
+				B114FC261EA6044C00A689CC /* ThreeDSController.m */,
+				B114FC271EA6044C00A689CC /* ThreeDSController.xib */,
+			);
+			name = 3DS;
+			sourceTree = "<group>";
+		};
+		B114FC1C1EA6040D00A689CC /* APM */ = {
+			isa = PBXGroup;
+			children = (
+				B114FC291EA6045C00A689CC /* APMController.h */,
+				B114FC2A1EA6045C00A689CC /* APMController.m */,
+				B114FC2B1EA6045C00A689CC /* APMController.xib */,
+				B114FC2D1EA6046700A689CC /* WorldpayAPMViewController.h */,
+				B114FC2E1EA6046700A689CC /* WorldpayAPMViewController.m */,
+				B114FC2F1EA6046700A689CC /* WorldpayAPMViewController.xib */,
+			);
+			name = APM;
+			sourceTree = "<group>";
+		};
+		B114FC1D1EA6041E00A689CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B114FC341EA604A100A689CC /* en.lproj */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B114FC341EA604A100A689CC /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				B114FC351EA604A100A689CC /* Localizable.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		B114FC371EA604C800A689CC /* WorldpayResources */ = {
+			isa = PBXGroup;
+			children = (
+				B114FC381EA604D500A689CC /* Supporting Files */,
+			);
+			name = WorldpayResources;
+			sourceTree = "<group>";
+		};
+		B114FC381EA604D500A689CC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B114FC391EA604F900A689CC /* WorldpayResources-Info.plist */,
+				B114FC3A1EA604F900A689CC /* WorldpayResources-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B114FC3B1EA6055300A689CC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B114FC3E1EA6081B00A689CC /* AFNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				B114FC3F1EA6082C00A689CC /* AFHTTPRequestOperation.h */,
+				B114FC401EA6082C00A689CC /* AFHTTPRequestOperation.m */,
+				B114FC411EA6082C00A689CC /* AFHTTPRequestOperationManager.h */,
+				B114FC421EA6082C00A689CC /* AFHTTPRequestOperationManager.m */,
+				B114FC431EA6082C00A689CC /* AFHTTPSessionManager.h */,
+				B114FC441EA6082C00A689CC /* AFHTTPSessionManager.m */,
+				B114FC451EA6082C00A689CC /* AFNetworking.h */,
+				B114FC461EA6082C00A689CC /* AFNetworkReachabilityManager.h */,
+				B114FC471EA6082C00A689CC /* AFNetworkReachabilityManager.m */,
+				B114FC481EA6082C00A689CC /* AFSecurityPolicy.h */,
+				B114FC491EA6082C00A689CC /* AFSecurityPolicy.m */,
+				B114FC4A1EA6082C00A689CC /* AFURLConnectionOperation.h */,
+				B114FC4B1EA6082C00A689CC /* AFURLConnectionOperation.m */,
+				B114FC4C1EA6082C00A689CC /* AFURLRequestSerialization.h */,
+				B114FC4D1EA6082C00A689CC /* AFURLRequestSerialization.m */,
+				B114FC4E1EA6082C00A689CC /* AFURLResponseSerialization.h */,
+				B114FC4F1EA6082C00A689CC /* AFURLResponseSerialization.m */,
+				B114FC501EA6082C00A689CC /* AFURLSessionManager.h */,
+				B114FC511EA6082C00A689CC /* AFURLSessionManager.m */,
+			);
+			name = AFNetworking;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		58B511DA1A9E6C8500147676 /* RNWorldPay */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNWorldPay" */;
+			buildPhases = (
+				58B511D71A9E6C8500147676 /* Sources */,
+				58B511D81A9E6C8500147676 /* Frameworks */,
+				58B511D91A9E6C8500147676 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RNWorldPay;
+			productName = RCTDataManager;
+			productReference = 134814201AA4EA6300B7C361 /* libRNWorldPay.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		58B511D31A9E6C8500147676 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Facebook;
+				TargetAttributes = {
+					58B511DA1A9E6C8500147676 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNWorldPay" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 58B511D21A9E6C8500147676;
+			productRefGroup = 58B511D21A9E6C8500147676;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				58B511DA1A9E6C8500147676 /* RNWorldPay */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		58B511D71A9E6C8500147676 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B114FC571EA6082C00A689CC /* AFURLConnectionOperation.m in Sources */,
+				B114FC241EA6044100A689CC /* WorldpayCardViewController.m in Sources */,
+				B114FC281EA6044C00A689CC /* ThreeDSController.m in Sources */,
+				B3E7B58A1CC2AC0600A0062D /* RNWorldPay.m in Sources */,
+				B114FC591EA6082C00A689CC /* AFURLResponseSerialization.m in Sources */,
+				B114FC331EA6048D00A689CC /* WorldpayUtils.m in Sources */,
+				B114FC581EA6082C00A689CC /* AFURLRequestSerialization.m in Sources */,
+				B114FC561EA6082C00A689CC /* AFSecurityPolicy.m in Sources */,
+				B114FC521EA6082C00A689CC /* AFHTTPRequestOperation.m in Sources */,
+				B114FC5A1EA6082C00A689CC /* AFURLSessionManager.m in Sources */,
+				B114FC5D1EA608E100A689CC /* Worldpay.m in Sources */,
+				B114FC201EA6043300A689CC /* Worldpay+ApplePay.m in Sources */,
+				B114FC2C1EA6045C00A689CC /* APMController.m in Sources */,
+				B114FC541EA6082C00A689CC /* AFHTTPSessionManager.m in Sources */,
+				B114FC301EA6046700A689CC /* WorldpayAPMViewController.m in Sources */,
+				B114FC551EA6082C00A689CC /* AFNetworkReachabilityManager.m in Sources */,
+				B114FC531EA6082C00A689CC /* AFHTTPRequestOperationManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		B114FC351EA604A100A689CC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B114FC361EA604A100A689CC /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		58B511ED1A9E6C8500147676 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		58B511EE1A9E6C8500147676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		58B511F01A9E6C8500147676 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../../ios/Frameworks/**",
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Worldpay",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = RNWorldPay;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		58B511F11A9E6C8500147676 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(PROJECT_DIR)/../../../ios/Frameworks/**",
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../react-native/React/**",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Worldpay",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = RNWorldPay;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "RNWorldPay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58B511ED1A9E6C8500147676 /* Debug */,
+				58B511EE1A9E6C8500147676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNWorldPay" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58B511F01A9E6C8500147676 /* Debug */,
+				58B511F11A9E6C8500147676 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 58B511D31A9E6C8500147676 /* Project object */;
+}

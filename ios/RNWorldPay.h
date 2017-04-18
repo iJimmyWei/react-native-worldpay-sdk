@@ -5,7 +5,7 @@
 #import <React/RCTBridgeModule.h>
 #endif
 
-@interface RNReactNativeWorldpaySdk : NSObject <RCTBridgeModule>
+@interface RNWorldPay : NSObject <RCTBridgeModule>
 
 @end
   
