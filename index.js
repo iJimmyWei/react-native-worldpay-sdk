@@ -1,2 +1,6 @@
-import RNWorldpaySDK from "./RNWorldpaySDK"
-export default RNWorldpaySDK;
+
+import { NativeModules } from 'react-native';
+
+const { RNWorldPay } = NativeModules;
+
+export default RNWorldPay;
