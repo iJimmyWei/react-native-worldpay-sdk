@@ -8,7 +8,7 @@
 #import "WorldpayAPMViewController.h"
 #import "WorldpayUtils.h"
 #import "APMController.h"
-#import <AFNetworking/AFNetworking.h>
+#import "AFNetworking.h"
 
 @interface WorldpayAPMViewController ()
 
