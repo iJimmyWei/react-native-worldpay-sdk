@@ -117,7 +117,7 @@ public class ReactNativeWorldpayModule extends ReactContextBaseJavaModule
 				@Override
 				public void onResponseError(ResponseError responseError)
 				{
-					promise.reject(Integer.toString(responseError.getHttpStatusCode()), responseError.getMessage());
+					promise.reject(Integer.toString(responseError.getHttpStatusCode()), responseError.getDescription());
 				}
 
 				@Override
@@ -153,7 +153,7 @@ public class ReactNativeWorldpayModule extends ReactContextBaseJavaModule
 				@Override
 				public void onResponseError(ResponseError responseError)
 				{
-					promise.reject(Integer.toString(responseError.getHttpStatusCode()), responseError.getMessage());
+					promise.reject(Integer.toString(responseError.getHttpStatusCode()), responseError.getDescription());
 				}
 
 				@Override
