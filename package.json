@@ -1,7 +1,7 @@
 {
   "name": "react-native-worldpay-sdk",
   "version": "1.0.0",
-  "description": "",
+  "description": "A React Native wrapper for the WorldPay SDK",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,7 +16,6 @@
   "author": "3 Sided Cube",
   "license": "MIT",
   "peerDependencies": {
-    "react-native": "^0.40.0",
-    "react-native-windows": "0.41.0-rc.1"
+    "react-native": "^0.40.0"
   }
 }
