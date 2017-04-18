@@ -125,7 +125,7 @@ public class ReactNativeWorldpayModule extends ReactContextBaseJavaModule
 				{
 					promise.reject(Integer.toString(worldPayError.getCode()), worldPayError.getMessage());
 				}
-			});
+			}).execute();
 		}
 		catch (Exception ex)
 		{
@@ -161,7 +161,7 @@ public class ReactNativeWorldpayModule extends ReactContextBaseJavaModule
 				{
 					promise.reject(Integer.toString(worldPayError.getCode()), worldPayError.getMessage());
 				}
-			});
+			}).execute();
 		}
 		catch (Exception ex)
 		{
