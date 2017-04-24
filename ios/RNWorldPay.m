@@ -50,7 +50,27 @@ RCT_EXPORT_METHOD(configure:(id)config) {
 RCT_EXPORT_METHOD(createToken:(id)cardInfo resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
     
-    [[Worldpay sharedInstance] createTokenWithNameOnCard:cardInfo[@"name"] cardNumber:cardInfo[@"number"] expirationMonth:cardInfo[@"expiryMonth"] expirationYear:cardInfo[@"expiryYear"] CVC:cardInfo[@"cvc"] success:^(int code, NSDictionary *responseDictionary) {
+    NSString *expiryMonth = cardInfo[@"expiryMonth"];
+    if (expiryMonth && [expiryMonth isKindOfClass:[NSNumber class]]) {
+        expiryMonth = [NSString stringWithFormat:@"%li", (long)[(NSNumber *)expiryMonth integerValue]];
+    }
+    
+    NSString *expiryYear = cardInfo[@"expiryYear"];
+    if (expiryYear && [expiryYear isKindOfClass:[NSNumber class]]) {
+        expiryYear = [NSString stringWithFormat:@"%li", (long)[(NSNumber *)expiryYear integerValue]];
+    }
+    
+    NSString *cardNumber = cardInfo[@"number"];
+    if (cardNumber && [cardNumber isKindOfClass:[NSNumber class]]) {
+        cardNumber = [NSString stringWithFormat:@"%li", (long)[(NSNumber *)cardNumber integerValue]];
+    }
+    
+    NSString *cvc = cardInfo[@"cvc"];
+    if (cvc && [cvc isKindOfClass:[NSNumber class]]) {
+        cvc = [NSString stringWithFormat:@"%li", (long)[(NSNumber *)cvc integerValue]];
+    }
+    
+    [[Worldpay sharedInstance] createTokenWithNameOnCard:cardInfo[@"name"] cardNumber:cardNumber expirationMonth:expiryMonth expirationYear:expiryYear CVC:cvc success:^(int code, NSDictionary *responseDictionary) {
         
         resolve(@{@"code":@(code), @"response": responseDictionary ? : [NSNull new]});
         
@@ -65,7 +85,12 @@ RCT_EXPORT_METHOD(createToken:(id)cardInfo resolver:(RCTPromiseResolveBlock)reso
 RCT_EXPORT_METHOD(reuseToken:(id)tokenInfo resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject){
     
-    [[Worldpay sharedInstance] reuseToken:tokenInfo[@"token"] withCVC:tokenInfo[@"cvc"] success:^(int code, NSDictionary *responseDictionary) {
+    NSString *cvc = tokenInfo[@"cvc"];
+    if (cvc && [cvc isKindOfClass:[NSNumber class]]) {
+        cvc = [NSString stringWithFormat:@"%li", (long)[(NSNumber *)cvc integerValue]];
+    }
+    
+    [[Worldpay sharedInstance] reuseToken:tokenInfo[@"token"] withCVC:cvc success:^(int code, NSDictionary *responseDictionary) {
         
         resolve(@{@"code":@(code), @"response": responseDictionary ? : [NSNull new]});
         
@@ -79,7 +104,27 @@ RCT_EXPORT_METHOD(reuseToken:(id)tokenInfo resolver:(RCTPromiseResolveBlock)reso
 
 RCT_EXPORT_METHOD(validateCardDetails:(id)cardInfo resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     
-    NSArray<NSError *> *errors = [[Worldpay sharedInstance] validateCardDetailsWithHolderName:cardInfo[@"name"] cardNumber:cardInfo[@"number"] expirationMonth:cardInfo[@"expiryMonth"] expirationYear:cardInfo[@"expiryYear"] CVC:cardInfo[@"cvc"]];
+    NSString *expiryMonth = cardInfo[@"expiryMonth"];
+    if (expiryMonth && [expiryMonth isKindOfClass:[NSNumber class]]) {
+        expiryMonth = [NSString stringWithFormat:@"%li", (long)[(NSNumber *)expiryMonth integerValue]];
+    }
+    
+    NSString *expiryYear = cardInfo[@"expiryYear"];
+    if (expiryYear && [expiryYear isKindOfClass:[NSNumber class]]) {
+        expiryYear = [NSString stringWithFormat:@"%li", (long)[(NSNumber *)expiryYear integerValue]];
+    }
+    
+    NSString *cardNumber = cardInfo[@"number"];
+    if (cardNumber && [cardNumber isKindOfClass:[NSNumber class]]) {
+        cardNumber = [NSString stringWithFormat:@"%li", (long)[(NSNumber *)cardNumber integerValue]];
+    }
+    
+    NSString *cvc = cardInfo[@"cvc"];
+    if (cvc && [cvc isKindOfClass:[NSNumber class]]) {
+        cvc = [NSString stringWithFormat:@"%li", (long)[(NSNumber *)cvc integerValue]];
+    }
+    
+    NSArray<NSError *> *errors = [[Worldpay sharedInstance] validateCardDetailsWithHolderName:cardInfo[@"name"] cardNumber:cardNumber expirationMonth:expiryMonth expirationYear:expiryYear CVC:cvc];
     
     NSMutableDictionary *returnStatuses = [@{
         @"name": @(true),
@@ -113,7 +158,13 @@ RCT_EXPORT_METHOD(validateCardDetails:(id)cardInfo resolver:(RCTPromiseResolveBl
 
 RCT_EXPORT_METHOD(validateToken:(id)tokenInfo resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
-    NSArray<NSError *> *errors = [[Worldpay sharedInstance] validateCardDetailsWithCVC:tokenInfo[@"cvc"] token:tokenInfo[@"token"]];
+    
+    NSString *cvc = tokenInfo[@"cvc"];
+    if (cvc && [cvc isKindOfClass:[NSNumber class]]) {
+        cvc = [NSString stringWithFormat:@"%li", (long)[(NSNumber *)cvc integerValue]];
+    }
+    
+    NSArray<NSError *> *errors = [[Worldpay sharedInstance] validateCardDetailsWithCVC:cvc token:tokenInfo[@"token"]];
     NSMutableDictionary *returnStatuses = [@{
                                              @"token": @(true),
                                              @"cvc": @(true)
