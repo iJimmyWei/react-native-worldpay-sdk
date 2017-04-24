@@ -2,6 +2,7 @@ package com.cube.worldpay;
 
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.Promise;
@@ -107,8 +108,16 @@ public class ReactNativeWorldpayModule extends ReactContextBaseJavaModule
 					WritableMap output = Arguments.createMap();
 					output.putInt("code", 200);
 
+					WritableMap paymentMethod = Arguments.createMap();
+					paymentMethod.putString("name", responseCard.getName());
+					paymentMethod.putString("cardType", responseCard.getCardType());
+					paymentMethod.putString("expiryMonth", responseCard.getExpiryMonth());
+					paymentMethod.putString("expiryYear", responseCard.getExpiryYear());
+					paymentMethod.putString("maskedCardNumber", responseCard.getMaskedCardNumber());
+
 					WritableMap response = Arguments.createMap();
 					response.putString("token", responseCard.getToken());
+					response.putMap("paymentMethod", paymentMethod);
 					output.putMap("response", response);
 
 					promise.resolve(output);
