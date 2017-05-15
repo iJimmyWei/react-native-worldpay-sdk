@@ -1,6 +1,7 @@
 #import "RNWorldPay.h"
 #import "Worldpay.h"
 #import <React/RCTConvert.h>
+@import PassKit;
 
 @implementation RCTConvert (WorldPay)
 RCT_ENUM_CONVERTER(WorldpayValidationType, (@{ @"advanced" : @(WorldpayValidationTypeAdvanced),
@@ -45,6 +46,30 @@ RCT_EXPORT_METHOD(configure:(id)config) {
     
     return [NSError errorWithDomain:@"RNWorldPayErrorDomain" code:error.code
                            userInfo:errorInfo];
+}
+
+RCT_REMAP_METHOD(canMakeApplePayPayments, canMakeApplePayPamentsWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    
+    if ([PKPaymentAuthorizationViewController canMakePayments]) {
+        resolve(@(true));
+    } else {
+        resolve(@(false));
+    }
+}
+
+RCT_EXPORT_METHOD(canMakeApplePayPaymentsUsingNetworks:(id)networks resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    
+    NSArray <PKPaymentNetwork> *paymentNetworks = [NSArray new];
+    
+    if ([networks isKindOfClass:[NSArray class]]) {
+        paymentNetworks = networks;
+    }
+    
+    if ([PKPaymentAuthorizationViewController canMakePaymentsUsingNetworks:paymentNetworks]) {
+        resolve(@(true));
+    } else {
+        resolve(@(false));
+    }
 }
 
 RCT_EXPORT_METHOD(createToken:(id)cardInfo resolver:(RCTPromiseResolveBlock)resolve
@@ -185,6 +210,55 @@ RCT_EXPORT_METHOD(validateToken:(id)tokenInfo resolver:(RCTPromiseResolveBlock)r
     }];
     
     resolve(returnStatuses);
+}
+
+- (NSDictionary<NSString *,id> *)constantsToExport
+{
+    
+    NSMutableDictionary *networks = [NSMutableDictionary dictionaryWithDictionary:@{
+                                     @"amex": PKPaymentNetworkAmex,
+                                     @"masterCard":PKPaymentNetworkMasterCard,
+                                     @"visa": PKPaymentNetworkVisa}];
+    
+    if (&PKPaymentNetworkCarteBancaire != NULL) {
+        networks[@"carteBancaire"] = PKPaymentNetworkCarteBancaire;
+    }
+    
+    if (&PKPaymentNetworkChinaUnionPay != NULL) {
+        networks[@"chinaUnionPay"] = PKPaymentNetworkChinaUnionPay;
+    }
+    
+    if (&PKPaymentNetworkDiscover != NULL) {
+        networks[@"discover"] = PKPaymentNetworkDiscover;
+    }
+    
+    if (&PKPaymentNetworkInterac != NULL) {
+        networks[@"interac"] = PKPaymentNetworkInterac;
+    }
+    
+    if (&PKPaymentNetworkPrivateLabel != NULL) {
+        networks[@"privateLabel"] = PKPaymentNetworkPrivateLabel;
+    }
+    
+    if (&PKPaymentNetworkJCB != NULL) {
+        networks[@"jcb"] = PKPaymentNetworkJCB;
+    }
+    
+    if (&PKPaymentNetworkSuica != NULL) {
+        networks[@"suica"] = PKPaymentNetworkSuica;
+    }
+    
+    if (&PKPaymentNetworkQuicPay != NULL) {
+        networks[@"quicPay"] = PKPaymentNetworkQuicPay;
+    }
+    
+    if (&PKPaymentNetworkIDCredit != NULL) {
+        networks[@"idCredit"] = PKPaymentNetworkIDCredit;
+    }
+    
+    return @{
+        @"paymentNetworks": networks
+    };
 }
 
 @end
