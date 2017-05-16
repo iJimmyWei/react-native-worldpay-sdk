@@ -82,6 +82,27 @@ RCT_EXPORT_METHOD(canMakeApplePayPaymentsUsingNetworks:(id)networks resolver:(RC
     }
 }
 
+RCT_EXPORT_METHOD(createTokenWithApplePaymentData:(NSString *)base64Data resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    
+    NSData *data = [[NSData alloc] initWithBase64EncodedString:base64Data options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    
+    if (!data) {
+        reject(@"com.rnworldpay.error", @"Couldn't base64 decode apple pay payment data", [NSError errorWithDomain:@"com.rnworldpay.error" code:400 userInfo:nil]);
+        return;
+    }
+    
+    [[Worldpay sharedInstance] createTokenWithPaymentData:data success:^(int code, NSDictionary *responseDictionary) {
+        
+        resolve(@{@"code":@(code), @"response": responseDictionary ? : [NSNull new]});
+        
+    } failure:^(NSDictionary *responseDictionary, NSArray *errors) {
+        
+        reject(responseDictionary[@"customCode"] ? : @"CREATE_TOKEN_FAILED",
+               responseDictionary[@"description"] ? : @"Unknown Error",
+               [self errorFromResponse:responseDictionary withError:errors.firstObject fallbackCode:@"CREATE_TOKEN_FAILED"]);
+    }];
+}
+
 RCT_EXPORT_METHOD(presentSetupApplePay) {
     [[PKPassLibrary new] openPaymentSetup];
 }
