@@ -423,6 +423,7 @@ RCT_EXPORT_METHOD(validateToken:(id)tokenInfo resolver:(RCTPromiseResolveBlock)r
     
     self.applePayRejectBlock = nil;
     self.applePayResolveBlock = nil;
+    self.applePayPaymentCompletion = nil;
 }
 
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didAuthorizePayment:(PKPayment *)payment completion:(void (^)(PKPaymentAuthorizationStatus))completion
