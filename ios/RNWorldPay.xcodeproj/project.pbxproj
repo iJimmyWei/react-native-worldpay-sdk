@@ -29,6 +29,7 @@
 		B1B7AA321ECAEABB0095F691 /* RCTConvert+WorldPay.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B7AA311ECAEABB0095F691 /* RCTConvert+WorldPay.m */; };
 		B1B7AA3E1ECB0E160095F691 /* PKPayment+Serialisation.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B7AA3D1ECB0E160095F691 /* PKPayment+Serialisation.m */; };
 		B1B7AA4A1ECB10DC0095F691 /* PKContact+Serialisation.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B7AA491ECB10DC0095F691 /* PKContact+Serialisation.m */; };
+		B1B7AA4D1ECB22FE0095F691 /* PKShippingMethod+Serialisation.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B7AA4C1ECB22FE0095F691 /* PKShippingMethod+Serialisation.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RNWorldPay.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNWorldPay.m */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +109,8 @@
 		B1B7AA3D1ECB0E160095F691 /* PKPayment+Serialisation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PKPayment+Serialisation.m"; sourceTree = "<group>"; };
 		B1B7AA481ECB10DC0095F691 /* PKContact+Serialisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PKContact+Serialisation.h"; sourceTree = "<group>"; };
 		B1B7AA491ECB10DC0095F691 /* PKContact+Serialisation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PKContact+Serialisation.m"; sourceTree = "<group>"; };
+		B1B7AA4B1ECB22FE0095F691 /* PKShippingMethod+Serialisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PKShippingMethod+Serialisation.h"; sourceTree = "<group>"; };
+		B1B7AA4C1ECB22FE0095F691 /* PKShippingMethod+Serialisation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PKShippingMethod+Serialisation.m"; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNWorldPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNWorldPay.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNWorldPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNWorldPay.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +160,8 @@
 				B10675DD1EC9DCC8004E7538 /* RNPaymentButton.m */,
 				B10675DF1EC9EC91004E7538 /* RNShadowPaymentButton.h */,
 				B10675E01EC9EC91004E7538 /* RNShadowPaymentButton.m */,
+				B1B7AA4B1ECB22FE0095F691 /* PKShippingMethod+Serialisation.h */,
+				B1B7AA4C1ECB22FE0095F691 /* PKShippingMethod+Serialisation.m */,
 				B1B7AA3C1ECB0E160095F691 /* PKPayment+Serialisation.h */,
 				B1B7AA3D1ECB0E160095F691 /* PKPayment+Serialisation.m */,
 				B1B7AA481ECB10DC0095F691 /* PKContact+Serialisation.h */,
@@ -392,6 +397,7 @@
 				B114FC301EA6046700A689CC /* WorldpayAPMViewController.m in Sources */,
 				B114FC551EA6082C00A689CC /* AFNetworkReachabilityManager.m in Sources */,
 				B114FC531EA6082C00A689CC /* AFHTTPRequestOperationManager.m in Sources */,
+				B1B7AA4D1ECB22FE0095F691 /* PKShippingMethod+Serialisation.m in Sources */,
 				B1B7AA321ECAEABB0095F691 /* RCTConvert+WorldPay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

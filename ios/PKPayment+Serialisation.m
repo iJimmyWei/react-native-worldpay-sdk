@@ -8,6 +8,7 @@
 
 #import "PKPayment+Serialisation.h"
 #import "PKContact+Serialisation.h"
+#import "PKShippingMethod+Serialisation.h"
 
 @implementation PKPayment (Serialisation)
 
@@ -19,6 +20,14 @@
     
     if (self.billingContact) {
         representation[@"billingContact"] = [self.billingContact dictionaryRepresentation];
+    }
+    
+    if (self.shippingContact) {
+        representation[@"shippingContact"] = [self.shippingContact dictionaryRepresentation];
+    }
+    
+    if (self.shippingMethod) {
+        representation[@"shippingMethod"] = [self.shippingMethod dictionaryRepresentation];
     }
     
     return representation;

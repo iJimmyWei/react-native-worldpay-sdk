@@ -170,6 +170,8 @@ RCT_CUSTOM_CONVERTER(PKShippingMethod *, PKShippingMethod, [RCTConvert convertSh
     
     
     shippingMethod.identifier = [RCTConvert NSString:json[@"identifier"]];
+    shippingMethod.detail = [RCTConvert NSString:json[@"detail"]];
+    
     return shippingMethod;
 }
 
