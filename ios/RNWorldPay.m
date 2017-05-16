@@ -2,6 +2,8 @@
 #import "Worldpay.h"
 #import "Worldpay+ApplePay.h"
 #import "RCTConvert+WorldPay.h"
+#import "UIWindow+VisibleViewController.h"
+#import "RCTUtils.h"
 @import PassKit;
 
 @interface RNWorldPay () <PKPaymentAuthorizationViewControllerDelegate>
@@ -75,7 +77,7 @@ RCT_EXPORT_METHOD(canMakeApplePayPaymentsUsingNetworks:(id)networks resolver:(RC
     }
 }
 
-RCT_EXPORT_METHOD(requestApplePayPayment:(id)config forMerchantId:(NSString *)merchantId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+RCT_EXPORT_METHOD(requestApplePayPayment:(NSString *)merchantId config:(id)config resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     
     
     // Create the payment request
@@ -88,6 +90,10 @@ RCT_EXPORT_METHOD(requestApplePayPayment:(id)config forMerchantId:(NSString *)me
     
     if (config[@"currencyCode"]) {
         request.currencyCode = [RCTConvert NSString:config[@"currencyCode"]];
+    }
+    
+    if (config[@"applicationData"]) {
+        request.applicationData = [RCTConvert NSData:config[@"applicationData"]];
     }
     
     if (config[@"supportedNetworks"] && [config[@"supportedNetworks"] isKindOfClass:[NSArray class]]) {
@@ -162,6 +168,14 @@ RCT_EXPORT_METHOD(requestApplePayPayment:(id)config forMerchantId:(NSString *)me
     
     PKPaymentAuthorizationViewController *authorizationViewController = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest:request];
     authorizationViewController.delegate = self;
+    
+    if (!authorizationViewController) {
+        reject(@"com.rnworldpay.error", @"Failed to create PKPaymentAuthorizationViewController", [NSError errorWithDomain:@"com.rnworldpay.error" code:404 userInfo:nil]);
+        return;
+    }
+    
+    UIViewController *controller = RCTKeyWindow().visibleViewController;
+    [controller presentViewController:authorizationViewController animated:true completion:nil];
 }
 
 #pragma mark-
@@ -363,7 +377,7 @@ RCT_EXPORT_METHOD(validateToken:(id)tokenInfo resolver:(RCTPromiseResolveBlock)r
 
 - (void)paymentAuthorizationViewControllerDidFinish:(PKPaymentAuthorizationViewController *)controller
 {
-    
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)paymentAuthorizationViewControllerWillAuthorizePayment:(PKPaymentAuthorizationViewController *)controller
