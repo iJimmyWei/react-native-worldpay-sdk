@@ -415,12 +415,14 @@ RCT_EXPORT_METHOD(validateToken:(id)tokenInfo resolver:(RCTPromiseResolveBlock)r
 - (void)paymentAuthorizationViewControllerDidFinish:(PKPaymentAuthorizationViewController *)controller
 {
     [controller dismissViewControllerAnimated:YES completion:nil];
+    
     // If we still have applePayPaymentCompletion it means that the completion block hasn't been called to the user cancelled the payment, in which case call reject block
     if (self.applePayPaymentCompletion && self.applePayRejectBlock) {
         self.applePayRejectBlock(@"com.rnworldpay.error", @"Apple pay flow was cancelled", [NSError errorWithDomain:@"com.rnworldpay.error" code:001 userInfo:nil]);
-        self.applePayRejectBlock = nil;
-        self.applePayResolveBlock = nil;
     }
+    
+    self.applePayRejectBlock = nil;
+    self.applePayResolveBlock = nil;
 }
 
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didAuthorizePayment:(PKPayment *)payment completion:(void (^)(PKPaymentAuthorizationStatus))completion
@@ -429,7 +431,6 @@ RCT_EXPORT_METHOD(validateToken:(id)tokenInfo resolver:(RCTPromiseResolveBlock)r
         self.applePayResolveBlock([payment dictionaryRepresentation]);
     }
     self.applePayResolveBlock = nil;
-    self.applePayRejectBlock = nil;
     self.applePayPaymentCompletion = completion;
 }
 
