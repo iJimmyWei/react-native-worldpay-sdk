@@ -1,14 +1,14 @@
 #import "RNWorldPay.h"
 #import "Worldpay.h"
-#import <React/RCTConvert.h>
+#import "Worldpay+ApplePay.h"
+#import "RCTConvert+WorldPay.h"
 @import PassKit;
 
-@implementation RCTConvert (WorldPay)
-RCT_ENUM_CONVERTER(WorldpayValidationType, (@{ @"advanced" : @(WorldpayValidationTypeAdvanced),
-                                               @"basic" : @(WorldpayValidationTypeBasic)
-                                            }),WorldpayValidationTypeBasic, intValue);
-@end
+@interface RNWorldPay () <PKPaymentAuthorizationViewControllerDelegate>
 
+@property (nonatomic, copy) void (^applePayPaymentCompletion)(PKPaymentAuthorizationStatus);
+
+@end
 
 @implementation RNWorldPay
 
@@ -48,6 +48,9 @@ RCT_EXPORT_METHOD(configure:(id)config) {
                            userInfo:errorInfo];
 }
 
+#pragma mark-
+#pragma mark Apple Pay
+
 RCT_REMAP_METHOD(canMakeApplePayPayments, canMakeApplePayPamentsWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     
     if ([PKPaymentAuthorizationViewController canMakePayments]) {
@@ -71,6 +74,98 @@ RCT_EXPORT_METHOD(canMakeApplePayPaymentsUsingNetworks:(id)networks resolver:(RC
         resolve(@(false));
     }
 }
+
+RCT_EXPORT_METHOD(requestApplePayPayment:(id)config forMerchantId:(NSString *)merchantId resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
+    
+    
+    // Create the payment request
+    PKPaymentRequest *request = [[Worldpay sharedInstance] createPaymentRequestWithMerchantIdentifier:merchantId];
+    
+    // Payment Information
+    if (config[@"countryCode"]) {
+        request.countryCode = [RCTConvert NSString:config[@"countryCode"]];
+    }
+    
+    if (config[@"currencyCode"]) {
+        request.currencyCode = [RCTConvert NSString:config[@"currencyCode"]];
+    }
+    
+    if (config[@"supportedNetworks"] && [config[@"supportedNetworks"] isKindOfClass:[NSArray class]]) {
+        
+        NSMutableArray *supportedNetworks = [NSMutableArray new];
+        
+        [((NSArray *)config[@"supportedNetworks"]) enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            PKPaymentNetwork network = [RCTConvert PKPaymentNetwork:obj];
+            if (network) {
+                [supportedNetworks addObject:network];
+            }
+        }];
+        
+        request.supportedNetworks = supportedNetworks;
+    }
+    
+    if (config[@"merchantCapabilities"]) {
+        request.merchantCapabilities = [RCTConvert PKMerchantCapability:config[@"merchantCapabilities"]];
+    }
+    
+    if (config[@"paymentSummaryItems"] && [config[@"paymentSummaryItems"] isKindOfClass:[NSArray class]]) {
+        
+        NSMutableArray *summaryItems = [NSMutableArray new];
+        
+        [((NSArray *)config[@"paymentSummaryItems"]) enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            PKPaymentSummaryItem *paymentSummaryItem = [RCTConvert PKPaymentSummaryItem:obj];
+            if (paymentSummaryItem) {
+                [summaryItems addObject:paymentSummaryItem];
+            }
+        }];
+        
+        request.paymentSummaryItems = summaryItems;
+    }
+    
+    // Billing and Shipping information
+    
+    if (config[@"requiredBillingAddressFields"]) {
+        request.requiredBillingAddressFields = [RCTConvert PKAddressField:config[@"requiredBillingAddressFields"]];
+    }
+    
+    if (config[@"requiredShippingAddressFields"]) {
+        request.requiredShippingAddressFields = [RCTConvert PKAddressField:config[@"requiredShippingAddressFields"]];
+    }
+    
+    if (config[@"shippingMethods"] && [config[@"shippingMethods"] isKindOfClass:[NSArray class]]) {
+        
+        NSMutableArray *shippingMethods = [NSMutableArray new];
+        
+        [((NSArray *)config[@"shippingMethods"]) enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            PKShippingMethod *shippingMethod = [RCTConvert PKShippingMethod:obj];
+            if (shippingMethod) {
+                [shippingMethods addObject:shippingMethod];
+            }
+        }];
+        request.shippingMethods = shippingMethods;
+    }
+    
+    if (config[@"shippingType"]) {
+        request.shippingType = [RCTConvert PKShippingType:config[@"shippingType"]];
+    }
+    
+    if (config[@"billingContact"]) {
+        request.billingContact = [RCTConvert PKContact:config[@"billingContact"]];
+    }
+    
+    if (config[@"shippingContact"]) {
+        request.shippingContact = [RCTConvert PKContact:config[@"shippingContact"]];
+    }
+    
+    PKPaymentAuthorizationViewController *authorizationViewController = [[PKPaymentAuthorizationViewController alloc] initWithPaymentRequest:request];
+    authorizationViewController.delegate = self;
+}
+
+#pragma mark-
+#pragma mark WorldPay
 
 RCT_EXPORT_METHOD(createToken:(id)cardInfo resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject) {
@@ -212,6 +307,8 @@ RCT_EXPORT_METHOD(validateToken:(id)tokenInfo resolver:(RCTPromiseResolveBlock)r
     resolve(returnStatuses);
 }
 
+#pragma mark export constants
+
 - (NSDictionary<NSString *,id> *)constantsToExport
 {
     
@@ -259,6 +356,25 @@ RCT_EXPORT_METHOD(validateToken:(id)tokenInfo resolver:(RCTPromiseResolveBlock)r
     return @{
         @"paymentNetworks": networks
     };
+}
+
+#pragma mark-
+#pragma mark PKPaymentAuthorizationViewControllerDelegate
+
+- (void)paymentAuthorizationViewControllerDidFinish:(PKPaymentAuthorizationViewController *)controller
+{
+    
+}
+
+- (void)paymentAuthorizationViewControllerWillAuthorizePayment:(PKPaymentAuthorizationViewController *)controller
+{
+    
+}
+
+- (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didAuthorizePayment:(PKPayment *)payment completion:(void (^)(PKPaymentAuthorizationStatus))completion
+{
+    
+    self.applePayPaymentCompletion = completion;
 }
 
 @end

@@ -49,8 +49,8 @@ RCT_ENUM_CONVERTER(PKPaymentButtonStyle, (@{
         allowedTypes[@"inStore"] = @(PKPaymentButtonTypeInStore);
     }
     
-    NSOperatingSystemVersion ios_10_3_0 = (NSOperatingSystemVersion){10, 3, 0};
-    if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:ios_10_3_0]) {
+    NSOperatingSystemVersion ios10_3_0 = (NSOperatingSystemVersion){10, 3, 0};
+    if ([[NSProcessInfo processInfo] isOperatingSystemAtLeastVersion:ios10_3_0]) {
         allowedTypes[@"donate"] = @(PKPaymentButtonTypeDonate);
     }
     
