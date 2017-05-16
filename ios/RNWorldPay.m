@@ -82,6 +82,10 @@ RCT_EXPORT_METHOD(canMakeApplePayPaymentsUsingNetworks:(id)networks resolver:(RC
     }
 }
 
+RCT_EXPORT_METHOD(presentSetupApplePay) {
+    [[PKPassLibrary new] openPaymentSetup];
+}
+
 RCT_EXPORT_METHOD(requestApplePayPayment:(NSString *)merchantId config:(id)config resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     
     if (self.applePayRejectBlock || self.applePayResolveBlock || self.applePayPaymentCompletion) {
