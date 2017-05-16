@@ -24,7 +24,7 @@
     }
     
     if (self.paymentData && self.paymentData.length > 0) {
-        representation[@"paymentData"] = self.paymentData;
+        representation[@"paymentData"] = [self.paymentData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
     }
     
     return representation;
