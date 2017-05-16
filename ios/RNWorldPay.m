@@ -61,9 +61,9 @@ RCT_EXPORT_METHOD(configure:(id)config) {
 RCT_REMAP_METHOD(canMakeApplePayPayments, canMakeApplePayPamentsWithResolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     
     if ([PKPaymentAuthorizationViewController canMakePayments]) {
-        resolve(@(true));
+        resolve(@{@"available": @(true)});
     } else {
-        resolve(@(false));
+        resolve(@{@"available": @(false)});
     }
 }
 
@@ -76,9 +76,9 @@ RCT_EXPORT_METHOD(canMakeApplePayPaymentsUsingNetworks:(id)networks resolver:(RC
     }
     
     if ([PKPaymentAuthorizationViewController canMakePaymentsUsingNetworks:paymentNetworks]) {
-        resolve(@(true));
+        resolve(@{@"setup":@(true)});
     } else {
-        resolve(@(false));
+        resolve(@{@"setup":@(false)});
     }
 }
 
