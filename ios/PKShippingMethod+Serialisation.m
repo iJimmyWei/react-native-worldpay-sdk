@@ -1,5 +1,5 @@
 //
-//  PKPayment+Serialisation.m
+//  PKShippingMethod+Serialisation.m
 //  RNWorldPay
 //
 //  Created by Simon Mitchell on 16/05/2017.

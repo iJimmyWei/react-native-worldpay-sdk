@@ -3,12 +3,17 @@
 #import "Worldpay+ApplePay.h"
 #import "RCTConvert+WorldPay.h"
 #import "UIWindow+VisibleViewController.h"
+#import "PKPayment+Serialisation.h"
 #import "RCTUtils.h"
 @import PassKit;
 
 @interface RNWorldPay () <PKPaymentAuthorizationViewControllerDelegate>
 
 @property (nonatomic, copy) void (^applePayPaymentCompletion)(PKPaymentAuthorizationStatus);
+
+@property (nonatomic, copy) RCTPromiseResolveBlock applePayResolveBlock;
+
+@property (nonatomic, copy) RCTPromiseRejectBlock applePayRejectBlock;
 
 @end
 
@@ -79,6 +84,10 @@ RCT_EXPORT_METHOD(canMakeApplePayPaymentsUsingNetworks:(id)networks resolver:(RC
 
 RCT_EXPORT_METHOD(requestApplePayPayment:(NSString *)merchantId config:(id)config resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
     
+    if (self.applePayRejectBlock || self.applePayResolveBlock || self.applePayPaymentCompletion) {
+        reject(@"com.rnworldpay.error", @"Cannot run multiple payment requests at the same time!", [NSError errorWithDomain:@"com.rnworldpay.error" code:429 userInfo:nil]);
+        return;
+    }
     
     // Create the payment request
     PKPaymentRequest *request = [[Worldpay sharedInstance] createPaymentRequestWithMerchantIdentifier:merchantId];
@@ -170,9 +179,12 @@ RCT_EXPORT_METHOD(requestApplePayPayment:(NSString *)merchantId config:(id)confi
     authorizationViewController.delegate = self;
     
     if (!authorizationViewController) {
-        reject(@"com.rnworldpay.error", @"Failed to create PKPaymentAuthorizationViewController", [NSError errorWithDomain:@"com.rnworldpay.error" code:404 userInfo:nil]);
+        reject(@"com.rnworldpay.error", @"Failed to create PKPaymentAuthorizationViewController", [NSError errorWithDomain:@"com.rnworldpay.error" code:400 userInfo:nil]);
         return;
     }
+    
+    self.applePayResolveBlock = resolve;
+    self.applePayRejectBlock = reject;
     
     UIViewController *controller = RCTKeyWindow().visibleViewController;
     [controller presentViewController:authorizationViewController animated:true completion:nil];
@@ -378,16 +390,21 @@ RCT_EXPORT_METHOD(validateToken:(id)tokenInfo resolver:(RCTPromiseResolveBlock)r
 - (void)paymentAuthorizationViewControllerDidFinish:(PKPaymentAuthorizationViewController *)controller
 {
     [controller dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (void)paymentAuthorizationViewControllerWillAuthorizePayment:(PKPaymentAuthorizationViewController *)controller
-{
-    
+    // If we still have applePayPaymentCompletion it means that the completion block hasn't been called to the user cancelled the payment, in which case call reject block
+    if (self.applePayPaymentCompletion && self.applePayRejectBlock) {
+        self.applePayRejectBlock(@"com.rnworldpay.error", @"Apple pay flow was cancelled", [NSError errorWithDomain:@"com.rnworldpay.error" code:001 userInfo:nil]);
+        self.applePayRejectBlock = nil;
+        self.applePayResolveBlock = nil;
+    }
 }
 
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didAuthorizePayment:(PKPayment *)payment completion:(void (^)(PKPaymentAuthorizationStatus))completion
 {
-    
+    if (self.applePayResolveBlock) {
+        self.applePayResolveBlock([payment dictionaryRepresentation]);
+    }
+    self.applePayResolveBlock = nil;
+    self.applePayRejectBlock = nil;
     self.applePayPaymentCompletion = completion;
 }
 

@@ -9,13 +9,14 @@
 #import "PKPayment+Serialisation.h"
 #import "PKContact+Serialisation.h"
 #import "PKShippingMethod+Serialisation.h"
+#import "PKPaymentToken+Serialisation.h"
 
 @implementation PKPayment (Serialisation)
 
 - (NSDictionary *)dictionaryRepresentation
 {
     NSMutableDictionary *representation = [NSMutableDictionary dictionaryWithDictionary:@{
-         @"token": self.token,
+         @"token": [self.token dictionaryRepresentation],
     }];
     
     if (self.billingContact) {

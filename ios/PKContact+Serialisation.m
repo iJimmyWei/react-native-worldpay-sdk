@@ -1,5 +1,5 @@
 //
-//  PKPayment+Serialisation.m
+//  PKContact+Serialisation.m
 //  RNWorldPay
 //
 //  Created by Simon Mitchell on 16/05/2017.
@@ -85,6 +85,8 @@
                 postalAddressDict[@"subAdministrativeArea"] = self.postalAddress.subAdministrativeArea;
             }
         }
+        
+        representation[@"postalAddress"] = postalAddressDict;
     }
     
     if (self.emailAddress) {

@@ -49,51 +49,51 @@ RCT_CUSTOM_CONVERTER(PKPaymentNetwork, PKPaymentNetwork, [RCTConvert convertPaym
 {
     if ([json isKindOfClass:[NSString class]]) {
         
-        if ([json isEqualToString:@"amex"]) {
+        if ([json isEqualToString:@"amex"] || [json isEqualToString:PKPaymentNetworkAmex]) {
             return PKPaymentNetworkAmex;
         }
         
-        if ([json isEqualToString:@"masterCard"]) {
+        if ([json isEqualToString:@"masterCard"] || [json isEqualToString:PKPaymentNetworkMasterCard]) {
             return PKPaymentNetworkMasterCard;
         }
         
-        if ([json isEqualToString:@"visa"]) {
+        if ([json isEqualToString:@"visa"]  || [json isEqualToString:PKPaymentNetworkVisa]) {
             return PKPaymentNetworkVisa;
         }
         
-        if ([json isEqualToString:@"carteBancaire"] && &PKPaymentNetworkCarteBancaire != NULL) {
+        if (&PKPaymentNetworkCarteBancaire != NULL && ([json isEqualToString:@"carteBancaire"] ||  [json isEqualToString:PKPaymentNetworkCarteBancaire])) {
             return PKPaymentNetworkCarteBancaire;
         }
         
-        if ([json isEqualToString:@"chinaUnionPay"] && &PKPaymentNetworkChinaUnionPay != NULL) {
+        if (&PKPaymentNetworkChinaUnionPay != NULL && ([json isEqualToString:@"chinaUnionPay"] ||  [json isEqualToString:PKPaymentNetworkChinaUnionPay])) {
             return PKPaymentNetworkChinaUnionPay;
         }
         
-        if ([json isEqualToString:@"discover"] && &PKPaymentNetworkDiscover != NULL) {
+        if (&PKPaymentNetworkDiscover != NULL && ([json isEqualToString:@"discover"] ||  [json isEqualToString:PKPaymentNetworkDiscover])) {
             return PKPaymentNetworkDiscover;
         }
         
-        if ([json isEqualToString:@"interac"] && &PKPaymentNetworkInterac != NULL) {
+        if (&PKPaymentNetworkInterac != NULL && ([json isEqualToString:@"interac"] ||  [json isEqualToString:PKPaymentNetworkInterac])) {
             return PKPaymentNetworkInterac;
         }
         
-        if ([json isEqualToString:@"privateLabel"] && &PKPaymentNetworkPrivateLabel != NULL) {
+        if (&PKPaymentNetworkPrivateLabel != NULL && ([json isEqualToString:@"privateLabel"] ||  [json isEqualToString:PKPaymentNetworkPrivateLabel])) {
             return PKPaymentNetworkPrivateLabel;
         }
         
-        if ([json isEqualToString:@"jcb"] && &PKPaymentNetworkJCB != NULL) {
+        if (&PKPaymentNetworkJCB != NULL && ([json isEqualToString:@"jcb"] ||  [json isEqualToString:PKPaymentNetworkJCB])) {
             return PKPaymentNetworkJCB;
         }
         
-        if ([json isEqualToString:@"suica"] && &PKPaymentNetworkSuica != NULL) {
+        if (&PKPaymentNetworkSuica != NULL && ([json isEqualToString:@"suica"] ||  [json isEqualToString:PKPaymentNetworkSuica])) {
             return PKPaymentNetworkSuica;
         }
         
-        if ([json isEqualToString:@"quicPay"] && &PKPaymentNetworkQuicPay != NULL) {
+        if (&PKPaymentNetworkQuicPay != NULL && ([json isEqualToString:@"quicPay"] ||  [json isEqualToString:PKPaymentNetworkQuicPay])) {
             return PKPaymentNetworkQuicPay;
         }
         
-        if ([json isEqualToString:@"idCredit"] && &PKPaymentNetworkIDCredit != NULL) {
+        if (&PKPaymentNetworkIDCredit != NULL && ([json isEqualToString:@"idCredit"] ||  [json isEqualToString:PKPaymentNetworkIDCredit])) {
             return PKPaymentNetworkIDCredit;
         }
         

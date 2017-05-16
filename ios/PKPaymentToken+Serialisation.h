@@ -1,5 +1,5 @@
 //
-//  PKContact+Serialisation.h
+//  PKPaymentToken+Serialisation.h
 //  RNWorldPay
 //
 //  Created by Simon Mitchell on 16/05/2017.
@@ -8,7 +8,7 @@
 
 @import PassKit;
 
-@interface PKContact (Serialisation)
+@interface PKPaymentToken (Serialisation)
 
 - (NSDictionary *)dictionaryRepresentation;
 

@@ -31,6 +31,8 @@
 		B1B7AA4A1ECB10DC0095F691 /* PKContact+Serialisation.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B7AA491ECB10DC0095F691 /* PKContact+Serialisation.m */; };
 		B1B7AA4D1ECB22FE0095F691 /* PKShippingMethod+Serialisation.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B7AA4C1ECB22FE0095F691 /* PKShippingMethod+Serialisation.m */; };
 		B1B7AA501ECB2D690095F691 /* UIWindow+VisibleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B7AA4F1ECB2D690095F691 /* UIWindow+VisibleViewController.m */; };
+		B1B7AA531ECB38AE0095F691 /* PKPaymentToken+Serialisation.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B7AA521ECB38AE0095F691 /* PKPaymentToken+Serialisation.m */; };
+		B1B7AA561ECB39100095F691 /* PKPaymentMethod+Serialisation.m in Sources */ = {isa = PBXBuildFile; fileRef = B1B7AA551ECB39100095F691 /* PKPaymentMethod+Serialisation.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RNWorldPay.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNWorldPay.m */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +116,10 @@
 		B1B7AA4C1ECB22FE0095F691 /* PKShippingMethod+Serialisation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PKShippingMethod+Serialisation.m"; sourceTree = "<group>"; };
 		B1B7AA4E1ECB2D690095F691 /* UIWindow+VisibleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWindow+VisibleViewController.h"; sourceTree = "<group>"; };
 		B1B7AA4F1ECB2D690095F691 /* UIWindow+VisibleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWindow+VisibleViewController.m"; sourceTree = "<group>"; };
+		B1B7AA511ECB38AE0095F691 /* PKPaymentToken+Serialisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PKPaymentToken+Serialisation.h"; sourceTree = "<group>"; };
+		B1B7AA521ECB38AE0095F691 /* PKPaymentToken+Serialisation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PKPaymentToken+Serialisation.m"; sourceTree = "<group>"; };
+		B1B7AA541ECB39100095F691 /* PKPaymentMethod+Serialisation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PKPaymentMethod+Serialisation.h"; sourceTree = "<group>"; };
+		B1B7AA551ECB39100095F691 /* PKPaymentMethod+Serialisation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "PKPaymentMethod+Serialisation.m"; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNWorldPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNWorldPay.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RNWorldPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNWorldPay.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,6 +175,10 @@
 				B1B7AA4C1ECB22FE0095F691 /* PKShippingMethod+Serialisation.m */,
 				B1B7AA3C1ECB0E160095F691 /* PKPayment+Serialisation.h */,
 				B1B7AA3D1ECB0E160095F691 /* PKPayment+Serialisation.m */,
+				B1B7AA541ECB39100095F691 /* PKPaymentMethod+Serialisation.h */,
+				B1B7AA551ECB39100095F691 /* PKPaymentMethod+Serialisation.m */,
+				B1B7AA511ECB38AE0095F691 /* PKPaymentToken+Serialisation.h */,
+				B1B7AA521ECB38AE0095F691 /* PKPaymentToken+Serialisation.m */,
 				B1B7AA481ECB10DC0095F691 /* PKContact+Serialisation.h */,
 				B1B7AA491ECB10DC0095F691 /* PKContact+Serialisation.m */,
 			);
@@ -389,6 +399,7 @@
 				B114FC331EA6048D00A689CC /* WorldpayUtils.m in Sources */,
 				B114FC581EA6082C00A689CC /* AFURLRequestSerialization.m in Sources */,
 				B10675DA1EC9DA3E004E7538 /* RNApplePayButtonManager.m in Sources */,
+				B1B7AA531ECB38AE0095F691 /* PKPaymentToken+Serialisation.m in Sources */,
 				B114FC561EA6082C00A689CC /* AFSecurityPolicy.m in Sources */,
 				B114FC521EA6082C00A689CC /* AFHTTPRequestOperation.m in Sources */,
 				B114FC5A1EA6082C00A689CC /* AFURLSessionManager.m in Sources */,
@@ -398,6 +409,7 @@
 				B114FC201EA6043300A689CC /* Worldpay+ApplePay.m in Sources */,
 				B1B7AA501ECB2D690095F691 /* UIWindow+VisibleViewController.m in Sources */,
 				B114FC2C1EA6045C00A689CC /* APMController.m in Sources */,
+				B1B7AA561ECB39100095F691 /* PKPaymentMethod+Serialisation.m in Sources */,
 				B114FC541EA6082C00A689CC /* AFHTTPSessionManager.m in Sources */,
 				B1B7AA3E1ECB0E160095F691 /* PKPayment+Serialisation.m in Sources */,
 				B114FC301EA6046700A689CC /* WorldpayAPMViewController.m in Sources */,
