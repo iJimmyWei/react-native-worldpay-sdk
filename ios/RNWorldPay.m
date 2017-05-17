@@ -223,7 +223,10 @@ RCT_EXPORT_METHOD(completeApplePayPayment:(id)status resolver:(RCTPromiseResolve
         return;
     }
     
-    self.applePayPaymentCompletion([RCTConvert PKPaymentAuthorizationStatus:status]);
+    // It's important to null this out, otherwise our rejection block gets called again which causes an error
+    void (^completionBlock)(PKPaymentAuthorizationStatus) = self.applePayPaymentCompletion;
+    self.applePayPaymentCompletion = nil;
+    completionBlock([RCTConvert PKPaymentAuthorizationStatus:status]);
     resolve(@{@"done": @(true)});
 }
                   
