@@ -22,6 +22,8 @@
 
 + (PKPaymentSummaryItemType)PKPaymentSummaryItemType:(id)json;
 
++ (PKPaymentAuthorizationStatus)PKPaymentAuthorizationStatus:(id)json;
+
 + (PKPaymentNetwork)PKPaymentNetwork:(id)json;
 
 + (PKPaymentSummaryItem *)PKPaymentSummaryItem:(id)json;

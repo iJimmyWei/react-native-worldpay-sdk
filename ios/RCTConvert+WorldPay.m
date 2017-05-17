@@ -43,6 +43,14 @@ RCT_ENUM_CONVERTER(PKPaymentSummaryItemType, (@{
                                                 @"pending": @(PKPaymentSummaryItemTypePending),
                                                 }), PKPaymentSummaryItemTypeFinal, intValue);
 
+RCT_ENUM_CONVERTER(PKPaymentAuthorizationStatus, (@{
+                                                    @"success": @(PKPaymentAuthorizationStatusSuccess),
+                                                    @"failure": @(PKPaymentAuthorizationStatusFailure),
+                                                    @"invalidBillingAddress": @(PKPaymentAuthorizationStatusInvalidBillingPostalAddress),
+                                                    @"invalidShippingAddress": @(PKPaymentAuthorizationStatusInvalidShippingPostalAddress),
+                                                    @"invalidShippingContact": @(PKPaymentAuthorizationStatusInvalidShippingContact)
+                                                    }), PKPaymentAuthorizationStatusFailure, intValue);
+
 RCT_CUSTOM_CONVERTER(PKPaymentNetwork, PKPaymentNetwork, [RCTConvert convertPaymentNetwork: json])
 
 + (PKPaymentNetwork)convertPaymentNetwork:(id)json

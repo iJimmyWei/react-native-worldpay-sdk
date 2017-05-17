@@ -215,6 +215,18 @@ RCT_EXPORT_METHOD(requestApplePayPayment:(NSString *)merchantId config:(id)confi
     [controller presentViewController:authorizationViewController animated:true completion:nil];
 }
 
+RCT_EXPORT_METHOD(completeApplePayPayment:(id)status resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)
+                  reject) {
+    
+    if (!self.applePayPaymentCompletion) {
+        reject(@"com.rnworldpay.error", @"There is no current Apple Pay payment request to complete", [NSError errorWithDomain:@"com.rnworldpay.error" code:404 userInfo:nil]);
+        return;
+    }
+    
+    self.applePayPaymentCompletion([RCTConvert PKPaymentAuthorizationStatus:status]);
+    resolve(@{@"done": @(true)});
+}
+                  
 #pragma mark-
 #pragma mark WorldPay
 
