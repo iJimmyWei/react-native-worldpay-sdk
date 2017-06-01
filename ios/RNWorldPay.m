@@ -90,13 +90,18 @@ RCT_EXPORT_METHOD(createTokenWithApplePaymentData:(NSString *)base64Data resolve
         reject(@"com.rnworldpay.error", @"Couldn't base64 decode apple pay payment data", [NSError errorWithDomain:@"com.rnworldpay.error" code:400 userInfo:nil]);
         return;
     }
-    
+  
+    __block BOOL reusable = [Worldpay sharedInstance].reusable;
+    [Worldpay sharedInstance].reusable = false;
+  
     [[Worldpay sharedInstance] createTokenWithPaymentData:data success:^(int code, NSDictionary *responseDictionary) {
         
+        [Worldpay sharedInstance].reusable = reusable;
         resolve(@{@"code":@(code), @"response": responseDictionary ? : [NSNull new]});
         
     } failure:^(NSDictionary *responseDictionary, NSArray *errors) {
         
+        [Worldpay sharedInstance].reusable = reusable;
         reject(responseDictionary[@"customCode"] ? : @"CREATE_TOKEN_FAILED",
                responseDictionary[@"description"] ? : @"Unknown Error",
                [self errorFromResponse:responseDictionary withError:errors.firstObject fallbackCode:@"CREATE_TOKEN_FAILED"]);
@@ -432,7 +437,7 @@ RCT_EXPORT_METHOD(validateToken:(id)tokenInfo resolver:(RCTPromiseResolveBlock)r
     [controller dismissViewControllerAnimated:YES completion:nil];
     
     // If we still have applePayPaymentCompletion it means that the completion block hasn't been called to the user cancelled the payment, in which case call reject block
-    if (self.applePayPaymentCompletion && self.applePayRejectBlock) {
+    if (self.applePayRejectBlock) {
         self.applePayRejectBlock(@"com.rnworldpay.error", @"Apple pay flow was cancelled", [NSError errorWithDomain:@"com.rnworldpay.error" code:001 userInfo:nil]);
     }
     
@@ -444,6 +449,7 @@ RCT_EXPORT_METHOD(validateToken:(id)tokenInfo resolver:(RCTPromiseResolveBlock)r
 - (void)paymentAuthorizationViewController:(PKPaymentAuthorizationViewController *)controller didAuthorizePayment:(PKPayment *)payment completion:(void (^)(PKPaymentAuthorizationStatus))completion
 {
     if (self.applePayResolveBlock) {
+        self.applePayRejectBlock = nil;
         self.applePayResolveBlock([payment dictionaryRepresentation]);
     }
     self.applePayResolveBlock = nil;
