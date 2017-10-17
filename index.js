@@ -7,7 +7,8 @@ export default RNWorldPay;
 
 'use strict';
 
-import React, {PropTypes} from "react";
+import React from "react";
+import PropTypes from "prop-types";
 
 export const ApplePayButton = React.createClass({
 
@@ -17,12 +18,12 @@ export const ApplePayButton = React.createClass({
 		/**
 		 * Whether the button is enabled
 		 */
-		enabled: React.PropTypes.bool,
+		enabled: PropTypes.bool,
 
 		/**
 		 * An callback when the button is pressed
 		 */
-		onPress: React.PropTypes.func,
+		onPress: PropTypes.func,
 
 		/**
 		 * The type of button to display this as
@@ -33,12 +34,12 @@ export const ApplePayButton = React.createClass({
 		 * - donate is only available iOS > 10.3
 		 * Providing an unavailable option will fall back to `plain`
 		 */
-		type: React.PropTypes.oneOf(['plain','buy','setup','inStore','donate']),
+		type: PropTypes.oneOf(['plain','buy','setup','inStore','donate']),
 
 		/**
 		 * The style of the Apple Pay button
 		 */
-		buttonStyle: React.PropTypes.oneOf(['black','white','whiteOutline'])
+		buttonStyle: PropTypes.oneOf(['black','white','whiteOutline'])
 	},
 
 	getDefaultProps() {
