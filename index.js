@@ -9,8 +9,9 @@ export default RNWorldPay;
 
 import React from "react";
 import PropTypes from "prop-types";
+import createReactClass from "create-react-class";
 
-export const ApplePayButton = React.createClass({
+export const ApplePayButton = createReactClass({
 
 	propTypes: {
 		...View.propTypes,
