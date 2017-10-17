@@ -4,7 +4,7 @@
 #import "RCTConvert+WorldPay.h"
 #import "UIWindow+VisibleViewController.h"
 #import "PKPayment+Serialisation.h"
-#import "RCTUtils.h"
+#import <React/RCTUtils.h>
 @import PassKit;
 
 @interface RNWorldPay () <PKPaymentAuthorizationViewControllerDelegate>
