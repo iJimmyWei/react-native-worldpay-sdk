@@ -18,7 +18,6 @@ public class ReactNativeWorldpayPackage implements ReactPackage
 		return Arrays.<NativeModule>asList(new ReactNativeWorldpayModule(reactContext));
 	}
 
-	@Override
 	public List<Class<? extends JavaScriptModule>> createJSModules()
 	{
 		return Collections.emptyList();
