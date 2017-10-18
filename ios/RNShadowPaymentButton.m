@@ -38,7 +38,7 @@
     if ((self = [super init])) {
         
         self.button = [RNPaymentButton new];
-        YGNodeSetMeasureFunc(self.cssNode, RCTMeasure);
+        YGNodeSetMeasureFunc(self.yogaNode, RCTMeasure);
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(contentSizeMultiplierDidChange:)
                                                      name:RCTUIManagerWillUpdateViewsDueToContentSizeMultiplierChangeNotification
@@ -75,7 +75,7 @@ static YGSize RCTMeasure(YGNodeRef node, float width, YGMeasureMode widthMode, f
 
 - (void)contentSizeMultiplierDidChange:(NSNotification *)note
 {
-    YGNodeMarkDirty(self.cssNode);
+    YGNodeMarkDirty(self.yogaNode);
     [self.button setNeedsLayout];
 }
 
