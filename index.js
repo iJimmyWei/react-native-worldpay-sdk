@@ -1,5 +1,5 @@
 
-import {requireNativeComponent, Platform, NativeModules, View} from 'react-native';
+import {requireNativeComponent, Platform, NativeModules, View, ViewPropTypes} from 'react-native';
 
 const { RNWorldPay } = NativeModules;
 
@@ -14,7 +14,7 @@ import createReactClass from "create-react-class";
 export const ApplePayButton = createReactClass({
 
 	propTypes: {
-		...View.propTypes,
+		...ViewPropTypes,
 
 		/**
 		 * Whether the button is enabled
