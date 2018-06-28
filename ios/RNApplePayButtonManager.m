@@ -9,8 +9,6 @@
 @import PassKit;
 #import "RNApplePayButtonManager.h"
 #import "RNPaymentButton.h"
-#import "RNShadowPaymentButton.h"
-
 
 @interface RCTConvert (ApplePay)
 
@@ -67,14 +65,14 @@ RCT_ENUM_CONVERTER(PKPaymentButtonStyle, (@{
 
 RCT_EXPORT_VIEW_PROPERTY(enabled, BOOL)
 
-RCT_EXPORT_SHADOW_PROPERTY(onPress, RCTBubblingEventBlock)
+RCT_EXPORT_VIEW_PROPERTY(onPress, RCTBubblingEventBlock)
 
-RCT_CUSTOM_SHADOW_PROPERTY(buttonStyle, PKPaymentButtonStyle, RNShadowPaymentButton)
+RCT_CUSTOM_VIEW_PROPERTY(buttonStyle, PKPaymentButtonStyle, RNPaymentButton)
 {
     view.style = [RCTConvert PKPaymentButtonStyle:json];
 }
 
-RCT_CUSTOM_SHADOW_PROPERTY(type, PKPaymentButtonType, RNShadowPaymentButton) {
+RCT_CUSTOM_VIEW_PROPERTY(type, PKPaymentButtonType, RNPaymentButton) {
     view.type = [RCTConvert PKPaymentButtonType:json];
 }
 
@@ -89,11 +87,6 @@ RCT_EXPORT_MODULE()
 - (dispatch_queue_t)methodQueue
 {
     return dispatch_get_main_queue();
-}
-
-- (RCTShadowView *)shadowView
-{
-    return [RNShadowPaymentButton new];
 }
 
 @end
