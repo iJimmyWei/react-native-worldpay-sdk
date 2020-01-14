@@ -1,15 +1,16 @@
 
 import {requireNativeComponent, Platform, NativeModules, View, ViewPropTypes} from 'react-native';
-
-const { RNWorldPay } = NativeModules;
-
-export default RNWorldPay;
-
-'use strict';
-
 import React from "react";
 import PropTypes from "prop-types";
 import createReactClass from "create-react-class";
+
+'use strict';
+
+const { RNWorldPay } = NativeModules;
+
+export const configure = (options) => RNWorldPay.configure(options);
+export const createToken = (options) => RNWorldPay.createToken(options);
+export const validateCardDetails = (options) => RNWorldPay.validateCardDetails(options);
 
 export const ApplePayButton = createReactClass({
 
